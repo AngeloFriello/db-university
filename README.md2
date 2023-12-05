@@ -17,3 +17,33 @@ ORDER BY `exam_id`;
 - SELECT (`department_id`), COUNT(`name`)
 FROM `degrees`
 GROUP BY `department_id`;
+
+
+*
+
+- SELECT *
+FROM `degrees`
+INNER JOIN `students`
+ON `students`.`degree_id` = `degrees`.`id`
+WHERE `degrees`.`name` LIKE '%Economia';
+
+- SELECT *
+FROM `degrees`
+INNER JOIN `departments`
+ON `departments`.`id` = `degrees`.`department_id`
+WHERE `degrees`.`level` LIKE 'magistrale'
+AND `departments`.`name` LIKE '%Neuro%';
+
+- SELECT *
+FROM `teachers`
+INNER JOIN `course_teacher` ON `teachers`.`id` = `course_teacher`.`teacher_id`
+INNER JOIN `courses` ON `course_teacher`.`course_id` = `courses`.`id`
+WHERE `teachers`.`name` LIKE 'Fulvio';
+
+- SELECT `students`.`name`,`students`.`surname`,`departments`.`name`,`degrees`.`name`
+FROM `students`
+INNER JOIN `degrees` ON `students`.`degree_id` = `degrees`.`id`
+INNER JOIN `departments` ON `degrees`.`department_id` = `departments`.`id`
+ORDER BY `students`.`surname`, `students`.`name` ASC;
+
+-
