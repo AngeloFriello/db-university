@@ -4,7 +4,7 @@
 
 - SELECT * FROM `courses` WHERE `cfu` > '10';
 
-- SELECT * FROM `students` WHERE `date_of_birth` BETWEEN '1800-01-01' AND '1993-12-04';
+- SELECT * ,TIMESTAMPDIFF(YEAR,`date_of_birth`,CURDATE()) as `anni` FROM `students` WHERE TIMESTAMPDIFF(YEAR,`date_of_birth`,CURDATE()) > 30;
 
 - SELECT * FROM `courses` WHERE `period` LIKE 'I %' AND `year` LIKE '1';
 
